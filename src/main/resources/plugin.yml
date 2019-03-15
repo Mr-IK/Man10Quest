@@ -1,0 +1,18 @@
+name: MQuest
+version: ${project.version}
+main: red.man10.mquest.MQuest
+authors: [Mr_IK]
+description: Man10 Quest Plugin
+commands:
+  mquest:
+    description: Man10Quest
+    usage: /<command>
+    default: op
+  mquestitem:
+    description: Man10QuestItem
+    usage: /<command>
+    default: op
+  wikimitayo:
+    description: Man10Quest_WikiQuestCommand
+    usage: /<command>
+    default: op
