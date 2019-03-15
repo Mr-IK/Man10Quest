@@ -3,8 +3,6 @@ package red.man10.mquest;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import red.man10.mquest.plus.ItemCommand;
-import red.man10.mquest.plus.quests.SayOhaman;
-import red.man10.mquest.plus.quests.WikiView;
 
 public final class MQuest extends JavaPlugin {
 
@@ -15,10 +13,6 @@ public final class MQuest extends JavaPlugin {
     public FlagManager fm;
     public VaultManager vault;
     public ItemCommand ic;
-
-    //以下、クエスト
-    public SayOhaman sayOhaman;
-    public WikiView wikiView;
 
     public String prefix = "§f§l[§d§lM§f§lQue§a§lst§f§l]§r";
 
@@ -39,9 +33,6 @@ public final class MQuest extends JavaPlugin {
         fm = new FlagManager(this);
         command = new MQuestCommand(this);
         ic = new ItemCommand(this);
-        //以下、クエスト
-        sayOhaman = new SayOhaman(this);
-        wikiView = new WikiView(this);
     }
 
     @Override
