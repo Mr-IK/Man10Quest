@@ -140,6 +140,9 @@ public class MQuestCommand implements CommandExecutor {
             }else if(args[0].equalsIgnoreCase("view")){
                 quest.qm.acceptingQuestList(p);
                 return true;
+            }else if(args[0].equalsIgnoreCase("list")){
+                quest.qm.questList(p);
+                return true;
             }
         }else if (args.length == 2) {
             if(args[0].equalsIgnoreCase("accept")){

@@ -117,6 +117,28 @@ public class QuestManager {
         return list;
     }
 
+    //すべてのクエストリスト
+    //スレッド化必須!!!!
+    public List<Integer> getAllQuestList(UUID uuid){
+        List<Integer> list = new ArrayList<>();
+        String sql = "SELECT * FROM quests ;";
+        ResultSet rs = mysql.query(sql);
+        if (rs == null) {
+            mysql.close();
+            return list;
+        }
+        try {
+            while(rs.next()){
+                list.add(rs.getInt("id"));
+            }
+        } catch (NullPointerException | SQLException e1) {
+            e1.printStackTrace();
+            return list;
+        }
+        mysql.close();
+        return list;
+    }
+
     //受諾できるクエスト一覧を取得
     //スレッド化必須!!!!
     public List<Integer> getWaitingQuests(UUID uuid){
@@ -216,6 +238,18 @@ public class QuestManager {
             p.sendMessage(quest.prefix+"§e=============§b受諾できるクエスト一覧§e=============");
             for(int i : idlist){
                 questDataMessageTwo(i,p);
+            }
+            p.sendMessage(quest.prefix+"§e===================================================");
+        });
+    }
+
+    //受諾できるクエスト一覧を表示
+    public void questList(Player p){
+        Bukkit.getScheduler().runTaskAsynchronously(quest, () -> {
+            List<Integer> idlist = getAllQuestList(p.getUniqueId());
+            p.sendMessage(quest.prefix+"§e=============§b受諾できるクエスト一覧§e=============");
+            for(int i : idlist){
+                questDataMessageOne(i,p);
             }
             p.sendMessage(quest.prefix+"§e===================================================");
         });
