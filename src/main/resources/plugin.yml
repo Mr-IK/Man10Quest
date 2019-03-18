@@ -12,7 +12,3 @@ commands:
     description: Man10QuestItem
     usage: /<command>
     default: op
-  wikimitayo:
-    description: Man10Quest_WikiQuestCommand
-    usage: /<command>
-    default: op
